@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     PlayerStateManager playerState;
 
     float xmove = 0f;
+    [SerializeField] float maxSpeed = 20f;
 
     float jumpBuffer = 0f;
 
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
             jumpBuffer -= Time.deltaTime;
         }
+        
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
     }
 
     private void OnMove(InputValue value)

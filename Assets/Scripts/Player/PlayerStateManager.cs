@@ -9,6 +9,8 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] Transform GroundPoint;
     [SerializeField] LayerMask GroundLayer;
 
+    int CurrentLayer = 0;
+    [SerializeField] List<RespawnPoint> respawnPoints = new List<RespawnPoint>();
 
     bool dead = false;
     bool canJump = true;
@@ -53,5 +55,16 @@ public class PlayerStateManager : MonoBehaviour
             Debug.Log("Coyote Jump");
         coyoteTimer = 0f;
         return canJump;
+    }
+
+    public void SetRespawnPoint(RespawnPoint r)
+    {
+        if (respawnPoints.Count < 10)
+        {
+            for (int i = 0; i < 10; i++)
+                respawnPoints.Add(r);
+        }
+
+        respawnPoints[r.DreamLayer] = r;
     }
 }
