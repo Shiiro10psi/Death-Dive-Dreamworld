@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerStateManager : MonoBehaviour
 {
     Rigidbody2D rb;
+    PlayerSoundsManager sounds;
+    DeathVolumeEffects deathEffects;
 
     [SerializeField] Transform GroundPoint;
     [SerializeField] LayerMask GroundLayer;
@@ -25,6 +27,8 @@ public class PlayerStateManager : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        sounds = GetComponent<PlayerSoundsManager>();
+        deathEffects = FindObjectOfType<DeathVolumeEffects>();
     }
 
     // Update is called once per frame
@@ -72,7 +76,9 @@ public class PlayerStateManager : MonoBehaviour
                 respawnPoints.Add(r);
         }
 
+        respawnPoints[r.DreamLayer].Deactivate();
         respawnPoints[r.DreamLayer] = r;
+        respawnPoints[r.DreamLayer].Activate();
     }
 
     public bool isOnGround()
@@ -85,7 +91,10 @@ public class PlayerStateManager : MonoBehaviour
         if (!dead)
         {
             dead = true;
-            
+
+            sounds.PlayHurtSound();
+            sounds.PlayDeathSound();
+
             StartCoroutine(Death());
         }
     }
@@ -106,14 +115,12 @@ public class PlayerStateManager : MonoBehaviour
 
     public IEnumerator Death()
     {
-        Debug.Log("Death Start");
         rb.freezeRotation = false;
-        
+        deathEffects.Play();
 
-        Debug.Log("Death Wait");
+
         yield return new WaitForSeconds(2);
-
-        Debug.Log("Respawn");
+        
         Respawn();
     }
 }

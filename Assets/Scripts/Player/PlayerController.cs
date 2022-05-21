@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     PlayerStateManager playerState;
+    PlayerSoundsManager sounds;
 
     float xmove = 0f;
     [SerializeField] float maxSpeed = 20f;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerState = GetComponent<PlayerStateManager>();
+        sounds = GetComponent<PlayerSoundsManager>();
     }
 
     private void FixedUpdate()
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
                 {
                     rb.velocity = new Vector2(rb.velocity.x, 0); //Nullify vertical movement to ensure jumps are always the same strength.
                     rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
-
+                    sounds.PlayJumpSound();
                     jumpBuffer = 0;
                 }
 

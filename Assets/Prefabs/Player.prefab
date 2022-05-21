@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3208361272334656143}
   - component: {fileID: 3208361272334656136}
   - component: {fileID: 3208361272334656137}
+  - component: {fileID: 292067158}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -193,6 +194,21 @@ MonoBehaviour:
   respawnPoints: []
   coyoteTime: 0.1
   deadBody: {fileID: 6670389509958347762, guid: d2800ae51fa7a914cb9e2fe973969399, type: 3}
+--- !u!114 &292067158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208361272334656146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ac6568118474f489b60e799eff6f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtSound: {fileID: 8300000, guid: a8bed6aa4c7ad90469d0ae9d754aae53, type: 3}
+  deathSound: {fileID: 8300000, guid: 6239731b0fa411642babdc4a82d59c02, type: 3}
+  jumpSound: {fileID: 8300000, guid: 94ae6c744b4afd34ba84249777a351c1, type: 3}
 --- !u!1 &3208361272560010026
 GameObject:
   m_ObjectHideFlags: 0

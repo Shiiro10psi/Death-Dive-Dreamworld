@@ -12,7 +12,6 @@ public class Spike : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Hit");
             Instantiate(bloodEffect, collision.GetContact(0).point, Quaternion.identity, other);
             other.GetComponent<PlayerStateManager>().SpikeDeath();
         }
