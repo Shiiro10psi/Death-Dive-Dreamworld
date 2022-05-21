@@ -24,22 +24,34 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(new Vector2((xmove * Time.deltaTime * moveSpeed), 0), ForceMode2D.Impulse);
-
-        if (jumpBuffer > 0)
+        if (playerState.IsAlive())
         {
-            if (playerState.CanJump())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, 0); //Nullify vertical movement to ensure jumps are always the same strength.
-                rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
-                
-                jumpBuffer = 0;
-            }
+            rb.AddForce(new Vector2((xmove * Time.deltaTime * moveSpeed), 0), ForceMode2D.Impulse);
 
-            jumpBuffer -= Time.deltaTime;
+            if (jumpBuffer > 0)
+            {
+                if (playerState.CanJump())
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, 0); //Nullify vertical movement to ensure jumps are always the same strength.
+                    rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
+
+                    jumpBuffer = 0;
+                }
+
+                jumpBuffer -= Time.deltaTime;
+            }
         }
         
-            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
+
+        if (xmove == 0 && playerState.isOnGround())
+        {
+            rb.drag = 3f;
+        }
+        if (xmove != 0)
+        {
+            rb.drag = 0.5f;
+        }
     }
 
     private void OnMove(InputValue value)

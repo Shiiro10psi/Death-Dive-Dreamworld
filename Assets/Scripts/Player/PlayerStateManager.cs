@@ -9,7 +9,8 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] Transform GroundPoint;
     [SerializeField] LayerMask GroundLayer;
 
-    int CurrentLayer = 0;
+     public int CurrentLayer { get { return m_CurrentLayer; }  set { m_CurrentLayer = value; } }
+    [SerializeField] int m_CurrentLayer = 0;
     [SerializeField] List<RespawnPoint> respawnPoints = new List<RespawnPoint>();
 
     bool dead = false;
@@ -18,7 +19,13 @@ public class PlayerStateManager : MonoBehaviour
     bool onGround = false;
     float coyoteTimer = 0f;
     [SerializeField] float coyoteTime = .1f;
-    
+
+    [SerializeField] GameObject deadBody;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -66,5 +73,47 @@ public class PlayerStateManager : MonoBehaviour
         }
 
         respawnPoints[r.DreamLayer] = r;
+    }
+
+    public bool isOnGround()
+    {
+        return onGround;
+    }
+
+    public void SpikeDeath()
+    {
+        if (!dead)
+        {
+            dead = true;
+            
+            StartCoroutine(Death());
+        }
+    }
+
+    public void Respawn()
+    {
+        Vector3 deathposition = transform.position;
+        Quaternion deathrotation = transform.rotation;
+
+        transform.position = respawnPoints[CurrentLayer - 1].transform.position;
+        CurrentLayer -= 1;
+        rb.rotation = 0;
+        rb.freezeRotation = true;
+        dead = false;
+
+        Instantiate(deadBody, deathposition, deathrotation);
+    }
+
+    public IEnumerator Death()
+    {
+        Debug.Log("Death Start");
+        rb.freezeRotation = false;
+        
+
+        Debug.Log("Death Wait");
+        yield return new WaitForSeconds(2);
+
+        Debug.Log("Respawn");
+        Respawn();
     }
 }
