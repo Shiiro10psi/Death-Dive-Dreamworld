@@ -6,7 +6,7 @@ public class PlayerSoundsManager : MonoBehaviour
 {
     SoundPlayer sp;
 
-    [SerializeField] AudioClip hurtSound, deathSound, jumpSound, waterSound;
+    [SerializeField] AudioClip hurtSound, deathSound, jumpSound, waterSound, gameOverSound;
 
     private void Awake()
     {
@@ -35,5 +35,10 @@ public class PlayerSoundsManager : MonoBehaviour
     public void PlayWaterSound()
     {
         sp.PlaySound(waterSound);
+    }
+
+    public void PlayGameOverSound()
+    {
+        sp.PlaySound(gameOverSound);
     }
 }

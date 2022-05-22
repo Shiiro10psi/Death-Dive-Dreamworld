@@ -31,7 +31,9 @@ public class DrowningVolumeEffects : MonoBehaviour
 
         if (volume.profile.TryGet<LiftGammaGain>(out lgg))
         {
-            Debug.Log(lgg.lift + "," + lgg.gamma + "," +lgg.gain);
+            lgg.lift.overrideState = true;
+            lgg.gamma.overrideState = true;
+            lgg.gain.overrideState = true;
         }
     }
 
@@ -61,11 +63,12 @@ public class DrowningVolumeEffects : MonoBehaviour
                     Mathf.Lerp(neutralLGG.gain.value.z, gain.z, (20 - air) / 20),
                     Mathf.Lerp(neutralLGG.gain.value.w, gain.w, (20 - air) / 20));
                     v.intensity.value = Mathf.Lerp(0, 1, (20 - air) / 20);
+
+                    clearTimer = air / 20f;
                 }
-                clearTimer = air /20f;
             }
 
-            if (!inWater)
+            if (!inWater && (clearTimer / clearTime) <= 1.2f)
             {
                 lgg.lift.value = new Vector4(Mathf.Lerp(lift.x,neutralLGG.lift.value.x,clearTimer / clearTime),
                     Mathf.Lerp(lift.y, neutralLGG.lift.value.y, clearTimer / clearTime),

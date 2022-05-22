@@ -194,6 +194,10 @@ MonoBehaviour:
   m_CurrentLayer: 0
   respawnPoints: []
   coyoteTime: 0.1
+  minHeartRate: 70
+  maxHeartRate: 150
+  SpikeHeartRate: 15
+  DrownHeartRate: 5
   MaxAir: 30
   deadBody: {fileID: 6670389509958347762, guid: d2800ae51fa7a914cb9e2fe973969399, type: 3}
 --- !u!114 &292067158
@@ -212,6 +216,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 6239731b0fa411642babdc4a82d59c02, type: 3}
   jumpSound: {fileID: 8300000, guid: 94ae6c744b4afd34ba84249777a351c1, type: 3}
   waterSound: {fileID: 8300000, guid: 772ff31a84384424692f128fc7db7e9a, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 784c111d1716b92449a39b6db6d5be46, type: 3}
 --- !u!1 &3208361272560010026
 GameObject:
   m_ObjectHideFlags: 0

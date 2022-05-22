@@ -53,7 +53,6 @@ public class MusicPlayer : MonoBehaviour
     public void ProvideSong(AudioClip audioClip)
     {
         CurrentSourceIndex = (CurrentSourceIndex + 1) % 2;
-        Debug.Log("Audio Source " + CurrentSourceIndex.ToString());
         audioSources[CurrentSourceIndex].clip = audioClip;
         audioSources[CurrentSourceIndex].loop = true;
         audioSources[CurrentSourceIndex].Play();

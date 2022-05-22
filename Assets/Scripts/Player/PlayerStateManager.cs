@@ -10,6 +10,7 @@ public class PlayerStateManager : MonoBehaviour
     DeathVolumeEffects deathEffects;
     DrowningVolumeEffects drownEffects;
     PlayerInput input;
+    PlayerStateUI ui;
 
     [SerializeField] Transform GroundPoint;
     [SerializeField] LayerMask GroundLayer;
@@ -26,6 +27,12 @@ public class PlayerStateManager : MonoBehaviour
     float coyoteTimer = 0f;
     [SerializeField] float coyoteTime = .1f;
 
+    int heartRate = 70;
+    [SerializeField] int minHeartRate = 70;
+    [SerializeField] int maxHeartRate = 150;
+
+    [SerializeField] int SpikeHeartRate = 15, DrownHeartRate = 5;
+
     float Air = 30f;
     [SerializeField] float MaxAir = 30f;
 
@@ -40,6 +47,13 @@ public class PlayerStateManager : MonoBehaviour
         deathEffects = FindObjectOfType<DeathVolumeEffects>();
         drownEffects = FindObjectOfType<DrowningVolumeEffects>();
         input = GetComponent<PlayerInput>();
+        ui = FindObjectOfType<PlayerStateUI>();
+
+    }
+
+    private void Start()
+    {
+        heartRate = minHeartRate;
     }
 
     // Update is called once per frame
@@ -77,6 +91,7 @@ public class PlayerStateManager : MonoBehaviour
         }
 
         drownEffects.Inform(Air);
+        ui.Inform(heartRate, keys);
     }
 
     public bool IsAlive()
@@ -121,9 +136,12 @@ public class PlayerStateManager : MonoBehaviour
             dead = true;
 
             sounds.PlayHurtSound();
-            sounds.PlayDeathSound();
+            heartRate += SpikeHeartRate;
 
-            StartCoroutine(Death());
+            if (heartRate < maxHeartRate)
+                StartCoroutine(Death());
+            if (heartRate >= maxHeartRate)
+                StartCoroutine(GameOverAnim());
         }
     }
     public void DrownDeath()
@@ -132,9 +150,13 @@ public class PlayerStateManager : MonoBehaviour
         {
             dead = true;
             
-            sounds.PlayDeathSound();
+            
+            heartRate += DrownHeartRate;
 
-            StartCoroutine(Death());
+            if (heartRate < maxHeartRate)
+                StartCoroutine(Death());
+            if (heartRate >= maxHeartRate)
+                StartCoroutine(GameOverAnim());
         }
     }
 
@@ -158,11 +180,26 @@ public class PlayerStateManager : MonoBehaviour
     {
         rb.freezeRotation = false;
         deathEffects.Play();
-
+        sounds.PlayGameOverSound();
 
         yield return new WaitForSeconds(2);
         
         Respawn();
+    }
+    public IEnumerator GameOverAnim()
+    {
+        rb.freezeRotation = false;
+        deathEffects.Play();
+        sounds.PlayGameOverSound();
+
+        yield return new WaitForSeconds(2);
+
+        GameOver();
+    }
+
+    void GameOver()
+    {
+        FindObjectOfType<GameOverMenu>().Open();
     }
 
     public void PickUpKey()
