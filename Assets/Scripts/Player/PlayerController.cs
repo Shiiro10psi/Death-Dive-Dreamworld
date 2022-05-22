@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 5f, jumpStrength = 5f, waterMoveSpeed = 10f;
     [SerializeField] float jumpBufferTime = .1f;
 
+    float lastY = 0f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,7 +56,8 @@ public class PlayerController : MonoBehaviour
                     if (playerState.CanJump() || waterJump)
                     {
                         rb.velocity = new Vector2(rb.velocity.x, 0); //Nullify vertical movement to ensure jumps are always the same strength.
-                        rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
+                        if (!waterJump)rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
+                        if (waterJump) rb.AddForce(new Vector2(0, jumpStrength / 1.5f), ForceMode2D.Impulse);
                         sounds.PlayJumpSound();
                         jumpBuffer = 0;
                     }
@@ -64,6 +67,17 @@ public class PlayerController : MonoBehaviour
             }
 
             waterJump = false;
+
+            if (lastY > rb.position.y)
+            {
+                rb.gravityScale = 1.5f;
+            }
+            if (lastY <= rb.position.y)
+            {
+                rb.gravityScale = 1f;
+            }
+
+            lastY = rb.position.y;
         }
 
         if (input.currentActionMap == input.actions.FindActionMap("Player_Water"))

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour
 {
     List<Image> NeutralTransitionImages;
+
+    bool loadDone;
     
     private void Awake()
     {
@@ -43,7 +45,7 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator SceneLoadingNeutral(int index)
     {
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
         //Debug.Log("Transition Start");
         do
         {
@@ -55,6 +57,7 @@ public class SceneLoader : MonoBehaviour
         } while (NeutralTransitionImages[0].fillAmount < 1);
         //Debug.Log("Transition Middle");
         SceneManager.LoadScene(index);
+        yield return new WaitUntil(LoadDone);
         do
         {
             foreach (Image i in NeutralTransitionImages)
@@ -66,5 +69,13 @@ public class SceneLoader : MonoBehaviour
         //Debug.Log("Transition End");
         Time.timeScale = 1f;
     }
-    
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        loadDone = true;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    bool LoadDone() { return loadDone; }
+
 }

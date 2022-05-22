@@ -49,7 +49,7 @@ public class MainMenu : MonoBehaviour, IMenu
     
     public void CreditsButton()
     {
-        Debug.Log("Not Implemented");
+        FindObjectOfType<SceneLoader>().LoadScene(4);
     }
 
     public void SettingsButton()

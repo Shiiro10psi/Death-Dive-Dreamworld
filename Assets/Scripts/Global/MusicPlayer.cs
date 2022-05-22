@@ -10,6 +10,8 @@ public class MusicPlayer : MonoBehaviour
 
     float volumeSetting = 0.7f;
 
+    [SerializeField] float switchSpeed = 3f;
+
 
     private void Awake()
     {
@@ -37,11 +39,11 @@ public class MusicPlayer : MonoBehaviour
             {
                 if (i == CurrentSourceIndex)
                 {
-                    audioSources[i].volume = Mathf.Lerp(audioSources[i].volume,volumeSetting,(Time.unscaledDeltaTime));
+                    audioSources[i].volume = Mathf.Lerp(audioSources[i].volume,volumeSetting,(Time.unscaledDeltaTime) * switchSpeed);
                 }
                 if (i != CurrentSourceIndex)
                 {
-                    audioSources[i].volume = Mathf.Lerp(audioSources[i].volume, 0, (Time.unscaledDeltaTime));
+                    audioSources[i].volume = Mathf.Lerp(audioSources[i].volume, 0, (Time.unscaledDeltaTime) * switchSpeed);
                     if (audioSources[i].volume <= 0.1f)
                     {
                         audioSources[i].Stop();

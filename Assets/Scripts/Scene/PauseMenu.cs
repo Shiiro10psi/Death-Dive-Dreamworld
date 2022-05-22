@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour, IMenu
 
     public void ReturnToMenuButton()
     {
-        FindObjectOfType<SceneLoader>().LoadScene(0);
+        FindObjectOfType<SceneLoader>().LoadScene(1);
     }
 
     public void RestartLevelButton()

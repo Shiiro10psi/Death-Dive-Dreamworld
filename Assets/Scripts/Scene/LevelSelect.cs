@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class GameOverMenu : MonoBehaviour, IMenu
+public class LevelSelect : MonoBehaviour, IMenu
 {
     CanvasGroup cg;
     [SerializeField] Button defaultButton;
@@ -15,10 +16,13 @@ public class GameOverMenu : MonoBehaviour, IMenu
         cg = GetComponent<CanvasGroup>();
     }
 
+    private void Start()
+    {
+        Open();
+    }
+
     public void Open()
     {
-        Time.timeScale = 0f;
-
         cg.alpha = 1f;
         cg.interactable = true;
         cg.blocksRaycasts = true;
@@ -27,30 +31,20 @@ public class GameOverMenu : MonoBehaviour, IMenu
 
     public void Close()
     {
-        Time.timeScale = 1f;
-
         cg.alpha = 0f;
         cg.interactable = false;
         cg.blocksRaycasts = false;
     }
-
-    public void SettingsButton()
-    {
-        if (settingsMenu == null)
-        {
-            settingsMenu = FindObjectOfType<SettingsMenu>();
-        }
-
-        settingsMenu.Open(this);
-    }
-
+    
     public void ReturnToMenuButton()
     {
-        FindObjectOfType<SceneLoader>().LoadScene(1);
+        FindObjectOfType<SceneLoader>().LoadScene(0);
     }
 
-    public void RestartLevelButton()
+    public void LoadLevelButton(int index)
     {
-        FindObjectOfType<SceneLoader>().ReloadScene();
+        FindObjectOfType<SceneLoader>().LoadScene(index);
     }
+
 }
+

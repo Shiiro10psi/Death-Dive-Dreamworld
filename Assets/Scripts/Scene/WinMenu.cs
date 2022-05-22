@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverMenu : MonoBehaviour, IMenu
+public class WinMenu : MonoBehaviour, IMenu
 {
     CanvasGroup cg;
     [SerializeField] Button defaultButton;
