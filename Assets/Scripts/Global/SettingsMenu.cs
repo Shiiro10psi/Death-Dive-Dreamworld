@@ -67,5 +67,10 @@ public class SettingsMenu : MonoBehaviour
     {
         sp.SetVolume(value);
     }
+
+    public void ReturnToMenuButton()
+    {
+        FindObjectOfType<SceneLoader>().LoadScene(0);
+    }
 }
 

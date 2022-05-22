@@ -6,11 +6,15 @@ public class PlayerSoundsManager : MonoBehaviour
 {
     SoundPlayer sp;
 
-    [SerializeField] AudioClip hurtSound, deathSound, jumpSound;
+    [SerializeField] AudioClip hurtSound, deathSound, jumpSound, waterSound;
 
     private void Awake()
     {
         sp = FindObjectOfType<SoundPlayer>();
+    }
+    private void Update()
+    {
+        if (sp == null) sp = FindObjectOfType<SoundPlayer>();
     }
 
     public void PlayHurtSound()
@@ -26,5 +30,10 @@ public class PlayerSoundsManager : MonoBehaviour
     public void PlayJumpSound()
     {
         sp.PlaySound(jumpSound);
+    }
+
+    public void PlayWaterSound()
+    {
+        sp.PlaySound(waterSound);
     }
 }

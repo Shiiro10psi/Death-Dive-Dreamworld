@@ -187,6 +187,7 @@ public class PlayerStateManager : MonoBehaviour
         rb.gravityScale = -.3f;
         input.SwitchCurrentActionMap("Player_Water");
         inWater = true;
+        sounds.PlayWaterSound();
     }
 
     public void ExitWater()
@@ -194,6 +195,7 @@ public class PlayerStateManager : MonoBehaviour
         rb.gravityScale = 1;
         input.SwitchCurrentActionMap("Player_Land");
         inWater = false;
+        sounds.PlayWaterSound();
     }
 
 }

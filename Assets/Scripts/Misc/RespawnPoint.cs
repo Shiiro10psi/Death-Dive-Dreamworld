@@ -19,6 +19,12 @@ public class RespawnPoint : MonoBehaviour
         sp = FindObjectOfType<SoundPlayer>();
     }
 
+    private void Update()
+    {
+
+        if (sp == null) sp = FindObjectOfType<SoundPlayer>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Transform other = collision.transform;

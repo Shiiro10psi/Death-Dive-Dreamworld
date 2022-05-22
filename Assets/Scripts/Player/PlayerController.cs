@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
+
     private void FixedUpdate()
     {
         if (input.currentActionMap == input.actions.FindActionMap("Player_Land"))

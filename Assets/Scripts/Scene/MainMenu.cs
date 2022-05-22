@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class PauseMenu : MonoBehaviour, IMenu
+public class MainMenu : MonoBehaviour, IMenu
 {
     CanvasGroup cg;
     [SerializeField] Button defaultButton;
@@ -15,10 +16,13 @@ public class PauseMenu : MonoBehaviour, IMenu
         cg = GetComponent<CanvasGroup>();
     }
 
+    private void Start()
+    {
+        Open();
+    }
+
     public void Open()
     {
-        Time.timeScale = 0f;
-
         cg.alpha = 1f;
         cg.interactable = true;
         cg.blocksRaycasts = true;
@@ -27,11 +31,25 @@ public class PauseMenu : MonoBehaviour, IMenu
 
     public void Close()
     {
-        Time.timeScale = 1f;
-
         cg.alpha = 0f;
         cg.interactable = false;
         cg.blocksRaycasts = false;
+    }
+
+
+    public void StartButton()
+    {
+        FindObjectOfType<SceneLoader>().LoadScene(1);
+    }
+
+    public void ReturnToMenuButton()
+    {
+        FindObjectOfType<SceneLoader>().LoadScene(0);
+    }
+    
+    public void CreditsButton()
+    {
+        Debug.Log("Not Implemented");
     }
 
     public void SettingsButton()
@@ -44,13 +62,5 @@ public class PauseMenu : MonoBehaviour, IMenu
         settingsMenu.Open(this);
     }
 
-    public void ReturnToMenuButton()
-    {
-        FindObjectOfType<SceneLoader>().LoadScene(0);
-    }
-
-    public void RestartLevelButton()
-    {
-        FindObjectOfType<SceneLoader>().ReloadScene();
-    }
 }
+

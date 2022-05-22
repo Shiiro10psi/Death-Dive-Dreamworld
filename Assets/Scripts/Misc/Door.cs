@@ -16,6 +16,12 @@ public class Door : MonoBehaviour
         sprites.AddRange(GetComponentsInChildren<SpriteRenderer>());
     }
 
+    private void Update()
+    {
+
+        if (sp == null) sp = FindObjectOfType<SoundPlayer>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Transform other = collision.transform;
