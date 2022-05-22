@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     PlayerStateManager playerState;
     PlayerSoundsManager sounds;
     PlayerInput input;
+    PauseMenu pauseMenu;
 
     float xmove = 0f;
     float ymove = 0f;
@@ -26,13 +27,14 @@ public class PlayerController : MonoBehaviour
         playerState = GetComponent<PlayerStateManager>();
         sounds = GetComponent<PlayerSoundsManager>();
         input = GetComponent<PlayerInput>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     private void FixedUpdate()
     {
         if (input.currentActionMap == input.actions.FindActionMap("Player_Land"))
         {
-            
+
             if (xmove == 0 && playerState.isOnGround())
             {
                 rb.drag = 3f;
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed));
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed));
     }
 
     private void OnMove(InputValue value)
@@ -92,5 +94,10 @@ public class PlayerController : MonoBehaviour
     private void OnJump(InputValue value)
     {
         jumpBuffer = jumpBufferTime;
+    }
+
+    private void OnPause(InputValue value)
+    {
+        pauseMenu.Open();
     }
 }
