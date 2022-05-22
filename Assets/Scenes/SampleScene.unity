@@ -10990,6 +10990,7 @@ GameObject:
   - component: {fileID: 1837406129}
   - component: {fileID: 1837406128}
   - component: {fileID: 1837406130}
+  - component: {fileID: 1837406131}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -11042,6 +11043,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLength: 2
+--- !u!114 &1837406131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837406127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2030920a5207246b2208186d8900b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lift: {x: 0, y: 0.15, z: 1, w: -0.06}
+  gamma: {x: 0.01, y: 0.22, z: 1, w: -0.75}
+  gain: {x: 0, y: 0.13, z: 1, w: -0.5}
 --- !u!1 &1940431848
 GameObject:
   m_ObjectHideFlags: 0
@@ -11373,10 +11389,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3208361272334656136, guid: 710e16d40349dcb4782374968b1c5e00, type: 3}
-      propertyPath: waterMoveSpeed
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 3208361272334656142, guid: 710e16d40349dcb4782374968b1c5e00, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -11420,10 +11432,6 @@ PrefabInstance:
     - target: {fileID: 3208361272334656142, guid: 710e16d40349dcb4782374968b1c5e00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3208361272334656143, guid: 710e16d40349dcb4782374968b1c5e00, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: a2b7b70d-6888-4155-9a0f-81cfa4d86d08
       objectReference: {fileID: 0}
     - target: {fileID: 3208361272334656146, guid: 710e16d40349dcb4782374968b1c5e00, type: 3}
       propertyPath: m_Name

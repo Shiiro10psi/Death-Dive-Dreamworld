@@ -8,6 +8,7 @@ public class PlayerStateManager : MonoBehaviour
     Rigidbody2D rb;
     PlayerSoundsManager sounds;
     DeathVolumeEffects deathEffects;
+    DrowningVolumeEffects drownEffects;
     PlayerInput input;
 
     [SerializeField] Transform GroundPoint;
@@ -37,6 +38,7 @@ public class PlayerStateManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sounds = GetComponent<PlayerSoundsManager>();
         deathEffects = FindObjectOfType<DeathVolumeEffects>();
+        drownEffects = FindObjectOfType<DrowningVolumeEffects>();
         input = GetComponent<PlayerInput>();
     }
 
@@ -71,8 +73,10 @@ public class PlayerStateManager : MonoBehaviour
         }
         if (!inWater)
         {
-            Air = Mathf.Clamp(Air + Time.deltaTime, 0f, MaxAir);
+            Air = Mathf.Clamp(Air + Time.deltaTime * 5f, 0f, MaxAir);
         }
+
+        drownEffects.Inform(Air);
     }
 
     public bool IsAlive()

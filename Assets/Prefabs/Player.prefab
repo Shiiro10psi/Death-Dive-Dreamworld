@@ -155,7 +155,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Player_Land
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &3208361272334656136
@@ -173,6 +173,7 @@ MonoBehaviour:
   maxSpeed: 12
   moveSpeed: 10
   jumpStrength: 7
+  waterMoveSpeed: 10
   jumpBufferTime: 0.1
 --- !u!114 &3208361272334656137
 MonoBehaviour:
@@ -193,6 +194,7 @@ MonoBehaviour:
   m_CurrentLayer: 0
   respawnPoints: []
   coyoteTime: 0.1
+  MaxAir: 30
   deadBody: {fileID: 6670389509958347762, guid: d2800ae51fa7a914cb9e2fe973969399, type: 3}
 --- !u!114 &292067158
 MonoBehaviour:
