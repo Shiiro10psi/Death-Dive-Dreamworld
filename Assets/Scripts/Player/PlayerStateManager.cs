@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStateManager : MonoBehaviour
 {
     Rigidbody2D rb;
     PlayerSoundsManager sounds;
     DeathVolumeEffects deathEffects;
+    PlayerInput input;
 
     [SerializeField] Transform GroundPoint;
     [SerializeField] LayerMask GroundLayer;
@@ -17,18 +19,25 @@ public class PlayerStateManager : MonoBehaviour
 
     bool dead = false;
     bool canJump = true;
+    bool inWater = false;
 
     bool onGround = false;
     float coyoteTimer = 0f;
     [SerializeField] float coyoteTime = .1f;
 
+    float Air = 30f;
+    [SerializeField] float MaxAir = 30f;
+
     [SerializeField] GameObject deadBody;
+
+    int keys = 0;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sounds = GetComponent<PlayerSoundsManager>();
         deathEffects = FindObjectOfType<DeathVolumeEffects>();
+        input = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -43,8 +52,6 @@ public class PlayerStateManager : MonoBehaviour
         {
             coyoteTimer -= Time.deltaTime;
         }
-
-
         if (coyoteTimer > 0)
         {
             canJump = true;
@@ -52,6 +59,19 @@ public class PlayerStateManager : MonoBehaviour
         if (coyoteTimer <= 0)
         {
             canJump = false;
+        }
+
+        if (inWater)
+        {
+            Air -= Time.deltaTime;
+            if (Air <= 0)
+            {
+                DrownDeath();
+            }
+        }
+        if (!inWater)
+        {
+            Air = Mathf.Clamp(Air + Time.deltaTime, 0f, MaxAir);
         }
     }
 
@@ -74,11 +94,15 @@ public class PlayerStateManager : MonoBehaviour
         {
             for (int i = 0; i < 10; i++)
                 respawnPoints.Add(r);
+            r.Activate();
         }
 
-        respawnPoints[r.DreamLayer].Deactivate();
-        respawnPoints[r.DreamLayer] = r;
-        respawnPoints[r.DreamLayer].Activate();
+        if (r != respawnPoints[r.DreamLayer])
+        {
+            respawnPoints[r.DreamLayer].Deactivate();
+            respawnPoints[r.DreamLayer] = r;
+            respawnPoints[r.DreamLayer].Activate();
+        }
     }
 
     public bool isOnGround()
@@ -98,6 +122,17 @@ public class PlayerStateManager : MonoBehaviour
             StartCoroutine(Death());
         }
     }
+    public void DrownDeath()
+    {
+        if (!dead)
+        {
+            dead = true;
+            
+            sounds.PlayDeathSound();
+
+            StartCoroutine(Death());
+        }
+    }
 
     public void Respawn()
     {
@@ -106,8 +141,10 @@ public class PlayerStateManager : MonoBehaviour
 
         transform.position = respawnPoints[CurrentLayer - 1].transform.position;
         CurrentLayer -= 1;
+        respawnPoints[CurrentLayer].Activate();
         rb.rotation = 0;
         rb.freezeRotation = true;
+        Air = MaxAir;
         dead = false;
 
         Instantiate(deadBody, deathposition, deathrotation);
@@ -123,4 +160,36 @@ public class PlayerStateManager : MonoBehaviour
         
         Respawn();
     }
+
+    public void PickUpKey()
+    {
+        keys++;
+    }
+
+    public void UseKey()
+    {
+        keys--;
+    }
+
+    public bool HasKey()
+    {
+        if (keys > 0)
+            return true;
+        return false;
+    }
+
+    public void EnterWater()
+    {
+        rb.gravityScale = -.3f;
+        input.SwitchCurrentActionMap("Player_Water");
+        inWater = true;
+    }
+
+    public void ExitWater()
+    {
+        rb.gravityScale = 1;
+        input.SwitchCurrentActionMap("Player_Land");
+        inWater = false;
+    }
+
 }

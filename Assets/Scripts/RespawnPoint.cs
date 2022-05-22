@@ -9,10 +9,14 @@ public class RespawnPoint : MonoBehaviour
     public int m_DreamLayer = 0;
 
     ParticleSystem ps;
+    SoundPlayer sp;
+
+    [SerializeField] AudioClip sound;
 
     private void Awake()
     {
         ps = GetComponentInChildren<ParticleSystem>();
+        sp = FindObjectOfType<SoundPlayer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,6 +37,7 @@ public class RespawnPoint : MonoBehaviour
     public void Activate()
     {
         ps.Play();
+        sp.PlaySound(sound);
     }
 
 }

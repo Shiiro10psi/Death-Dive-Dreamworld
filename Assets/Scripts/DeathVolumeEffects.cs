@@ -55,7 +55,6 @@ public class DeathVolumeEffects : MonoBehaviour
             if (volume.profile.TryGet<LensDistortion>(out l))
             {
                 l.intensity.value = Mathf.Clamp(l.intensity.value + Random.Range(-.1f,.1f),-1f,1f);
-                Debug.Log(l.intensity.value);
             }
 
             yield return new WaitForFixedUpdate();
