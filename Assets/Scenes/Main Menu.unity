@@ -393,8 +393,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Death Dive Dreamworld
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 56bb31122bd93b34ea5bbe8ca3204f8a, type: 2}
-  m_sharedMaterial: {fileID: 8082257623167192239, guid: 56bb31122bd93b34ea5bbe8ca3204f8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4204149fc08f5564d89f2dcf6d133efe, type: 2}
+  m_sharedMaterial: {fileID: 4204430756159030639, guid: 4204149fc08f5564d89f2dcf6d133efe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -418,8 +418,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 125
+  m_fontSizeBase: 125
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -514,7 +514,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7787944, y: 1}
+    m_SensorSize: {x: 1.7768817, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

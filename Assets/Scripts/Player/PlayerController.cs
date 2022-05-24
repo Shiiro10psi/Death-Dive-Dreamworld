@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpBufferTime = .1f;
 
     float lastY = 0f;
+    float escapeJumpTime = .5f;
+    float escapeJumpTimer = 0f;
 
     private void Awake()
     {
@@ -78,6 +80,16 @@ public class PlayerController : MonoBehaviour
             }
 
             lastY = rb.position.y;
+
+            if (!playerState.isOnGround() && (rb.velocity.x < .01f && rb.velocity.x > -.01f) && (rb.velocity.y < .01f && rb.velocity.y > -.01f))
+            {
+                escapeJumpTimer += Time.fixedDeltaTime;
+                if (escapeJumpTimer >= escapeJumpTime)
+                {
+                    rb.AddForce(new Vector2(0, jumpStrength / 2f), ForceMode2D.Impulse);
+                    escapeJumpTimer = 0f;
+                }
+            }
         }
 
         if (input.currentActionMap == input.actions.FindActionMap("Player_Water"))

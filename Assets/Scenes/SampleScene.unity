@@ -2240,7 +2240,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7787944, y: 1}
+    m_SensorSize: {x: 1.7768817, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2498,7 +2498,7 @@ RectTransform:
   m_Children:
   - {fileID: 1884964471}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2653,51 +2653,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382197319}
   m_CullTransparentMesh: 1
---- !u!1 &414828924
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 414828926}
-  - component: {fileID: 414828925}
-  m_Layer: 0
-  m_Name: SceneSettings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &414828925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414828924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f18627499dc55e43b82fc2dcadb2cec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgm: {fileID: 8300000, guid: e5b1a464d2f53de4ca747c9d2cb3ccaa, type: 3}
---- !u!4 &414828926
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414828924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.525213, y: -2.7807295, z: -5.1929207}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &483157238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4343,7 +4298,7 @@ RectTransform:
   m_Children:
   - {fileID: 1837104198}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5913,7 +5868,7 @@ RectTransform:
   m_Children:
   - {fileID: 77296074}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14476,7 +14431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 666399239915308767, guid: 3a14b6cdf52671648bb515815c4ee418, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 666399239915308767, guid: 3a14b6cdf52671648bb515815c4ee418, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14914,7 +14869,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4020246468886827508, guid: af44cca07d798e348a7704b780eac6d4, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4020246468886827508, guid: af44cca07d798e348a7704b780eac6d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15146,7 +15101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7003889521482639134, guid: acdda9628dd5d404f8ca78d62de1db52, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7003889521482639134, guid: acdda9628dd5d404f8ca78d62de1db52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15370,7 +15325,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9134583797008454018, guid: f0b7726ca280cbc4cb312ab5f9e1d62a, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 9134583797008454018, guid: f0b7726ca280cbc4cb312ab5f9e1d62a, type: 3}
       propertyPath: m_LocalPosition.x
