@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     PlayerInput input;
     PauseMenu pauseMenu;
 
+    Animator animator;
+
+
     float xmove = 0f;
     float ymove = 0f;
     [SerializeField] float maxSpeed = 20f;
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
         sounds = GetComponent<PlayerSoundsManager>();
         input = GetComponent<PlayerInput>();
         pauseMenu = FindObjectOfType<PauseMenu>();
+
+        animator = GetComponent<Animator>();
     }
 
 
@@ -81,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
             lastY = rb.position.y;
 
-            if (!playerState.isOnGround() && (rb.velocity.x < .01f && rb.velocity.x > -.01f) && (rb.velocity.y < .01f && rb.velocity.y > -.01f))
+            if (!playerState.isOnGround() && (rb.velocity.x < .01f && rb.velocity.x > -.01f) && (rb.velocity.y < .01f && rb.velocity.y > -.01f) && playerState.IsAlive())
             {
                 escapeJumpTimer += Time.fixedDeltaTime;
                 if (escapeJumpTimer >= escapeJumpTime)
@@ -116,6 +121,9 @@ public class PlayerController : MonoBehaviour
             xmove = v.x;
             ymove = v.y;
         }
+
+        if (value.Get<Vector2>().x != 0)
+            animator.SetFloat("LastX", value.Get<Vector2>().x);
     }
 
     private void OnJump(InputValue value)

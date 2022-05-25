@@ -11,7 +11,6 @@ public class PlayerStateManager : MonoBehaviour
     DrowningVolumeEffects drownEffects;
     PlayerInput input;
     PlayerStateUI ui;
-
     [SerializeField] Transform GroundPoint;
     [SerializeField] LayerMask GroundLayer;
 
@@ -48,7 +47,6 @@ public class PlayerStateManager : MonoBehaviour
         drownEffects = FindObjectOfType<DrowningVolumeEffects>();
         input = GetComponent<PlayerInput>();
         ui = FindObjectOfType<PlayerStateUI>();
-
     }
 
     private void Start()
@@ -92,6 +90,8 @@ public class PlayerStateManager : MonoBehaviour
 
         drownEffects.Inform(Air);
         ui.Inform(heartRate, keys);
+
+        
     }
 
     public bool IsAlive()

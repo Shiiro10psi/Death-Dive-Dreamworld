@@ -1116,35 +1116,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game created by Shiiro
-
-
-    -------------------------------------------------------------------------------
-
-    TOOLS
-
-    -------------------------------------------------------------------------------
-
-    Sounds
-    created with ChipTone (https://sfbgames.itch.io/chiptone)
-
-    Music created
-    with Bosca Ceoil
-
-    (https://terrycavanagh.itch.io/bosca-ceoil)
-
-    -------------------------------------------------------------------------------
-
-    EXTERNAL
-    ASSETS
-
-    -------------------------------------------------------------------------------
-
-    Pixel
-    Platformer Blocks, Pixel Platformer, Scribble Platformer, UI Pack, Particle Pack
-
-    by
-    Kenney (Kenney.nl)'
+  m_text: "Game created by Shiiro 10\u03A8\n\n-------------------------------------------------------------------------------\nTOOLS\n-------------------------------------------------------------------------------\nSounds
+    created with ChipTone (https://sfbgames.itch.io/chiptone)\nMusic created with
+    Bosca Ceoil\n(https://terrycavanagh.itch.io/bosca-ceoil)\n-------------------------------------------------------------------------------\nEXTERNAL
+    ASSETS\n-------------------------------------------------------------------------------\nPixel
+    Platformer Blocks, Pixel Platformer, Scribble Platformer, UI Pack, Particle Pack\nby
+    Kenney (Kenney.nl)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1480,7 +1457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7edb6a2020979fc47841f37adc4c0623, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1736,7 +1713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: d88507d3598ade64cbbc7a34a9bfddd4, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2788,7 +2765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7edb6a2020979fc47841f37adc4c0623, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
