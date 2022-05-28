@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.drag = 3f;
             }
-            if (xmove != 0 || jumpBuffer > 0)
+            if (xmove != 0 || jumpBuffer > 0 || !playerState.isOnGround())
             {
                 rb.drag = 0.5f;
             }
