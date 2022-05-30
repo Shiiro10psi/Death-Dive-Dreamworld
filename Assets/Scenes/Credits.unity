@@ -1121,9 +1121,10 @@ MonoBehaviour:
     Bosca Ceoil\n(https://terrycavanagh.itch.io/bosca-ceoil)\n-------------------------------------------------------------------------------\nEXTERNAL
     ASSETS\n-------------------------------------------------------------------------------\nPixel
     Platformer Blocks, Pixel Platformer, Scribble Platformer, UI Pack, Particle Pack\nby
-    Kenney (Kenney.nl)\n\nA Platformer in the Forest by Buch (https://opengameart.org/content/a-platformer-in-the-forest)\n\nPixel
-    Art Castle Tileset by rubberduck (https://opengameart.org/content/pixel-art-castle-tileset)\n\nMagic
-    Cliffs Environment by ansimuz (https://opengameart.org/content/magic-cliffs-environment)\n\n-------------------------------------------------------------------------------\n\nMusic
+    Kenney (Kenney.nl) (CC0)\n\nA Platformer in the Forest by Buch (https://opengameart.org/content/a-platformer-in-the-forest)
+    (CC0)\n\nPixel Art Castle Tileset by rubberduck (https://opengameart.org/content/pixel-art-castle-tileset)
+    (CC0)\n\nMagic Cliffs Environment by Ansimuz.com (https://opengameart.org/content/magic-cliffs-environment)
+    (CC BY 3.0)\n\n-------------------------------------------------------------------------------\n\nMusic
     arranged from \nTr\xE4umerei, Op.21\nby Franti\u0161ek Alois Drdla (Public Domain)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2364,7 +2365,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1003731822}
   m_HandleRect: {fileID: 1003731821}
   m_Direction: 2
-  m_Value: 0.99999994
+  m_Value: 1
   m_Size: 0.2487901
   m_NumberOfSteps: 0
   m_OnValueChanged:
