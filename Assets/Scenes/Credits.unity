@@ -1094,7 +1094,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 960, y: 1000}
+  m_SizeDelta: {x: 960, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &605326621
 MonoBehaviour:
@@ -1116,12 +1116,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Game created by Shiiro 10\u03A8\n\n-------------------------------------------------------------------------------\nTOOLS\n-------------------------------------------------------------------------------\nSounds
+  m_text: "Game created by Benjamin Humes\n\n-------------------------------------------------------------------------------\nTOOLS\n-------------------------------------------------------------------------------\nSounds
     created with ChipTone (https://sfbgames.itch.io/chiptone)\nMusic created with
     Bosca Ceoil\n(https://terrycavanagh.itch.io/bosca-ceoil)\n-------------------------------------------------------------------------------\nEXTERNAL
     ASSETS\n-------------------------------------------------------------------------------\nPixel
     Platformer Blocks, Pixel Platformer, Scribble Platformer, UI Pack, Particle Pack\nby
-    Kenney (Kenney.nl)"
+    Kenney (Kenney.nl)\n\nA Platformer in the Forest by Buch (https://opengameart.org/content/a-platformer-in-the-forest)\n\nPixel
+    Art Castle Tileset by rubberduck (https://opengameart.org/content/pixel-art-castle-tileset)\n\nMagic
+    Cliffs Environment by ansimuz (https://opengameart.org/content/magic-cliffs-environment)\n\n-------------------------------------------------------------------------------\n\nMusic
+    arranged from \nTr\xE4umerei, Op.21\nby Franti\u0161ek Alois Drdla (Public Domain)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2361,8 +2364,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1003731822}
   m_HandleRect: {fileID: 1003731821}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.49270195
+  m_Value: 0.99999994
+  m_Size: 0.2487901
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

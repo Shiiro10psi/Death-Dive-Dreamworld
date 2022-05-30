@@ -9,6 +9,8 @@ public class SceneLoader : MonoBehaviour
     List<Image> NeutralTransitionImages;
 
     bool loadDone;
+
+    bool loadLock = false;
     
     private void Awake()
     {
@@ -30,22 +32,23 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(int index)
     {
-        StartCoroutine(SceneLoadingNeutral(index));
+        if (!loadLock) StartCoroutine(SceneLoadingNeutral(index));
     }
 
     public void ReloadScene()
     {
-        StartCoroutine(SceneLoadingNeutral(SceneManager.GetActiveScene().buildIndex));
+        if (!loadLock) StartCoroutine(SceneLoadingNeutral(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void ReturnToMenu()
     {
-        LoadScene(0);
+        if (!loadLock) LoadScene(0);
     }
 
     private IEnumerator SceneLoadingNeutral(int index)
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        loadLock = true;
         //Debug.Log("Transition Start");
         do
         {
@@ -67,6 +70,7 @@ public class SceneLoader : MonoBehaviour
             yield return new WaitForEndOfFrame();
         } while (NeutralTransitionImages[0].fillAmount > 0);
         //Debug.Log("Transition End");
+        loadLock = false;
         Time.timeScale = 1f;
     }
 

@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 8040d981bb36a134bbff415471e4f894
+  - enabled: 1
+    path: Assets/Scenes/Level 1 - Sketchbook.unity
+    guid: 060d402ccc7cb33459a0cefd48bb263d
+  - enabled: 1
+    path: Assets/Scenes/Level 2 - Castle Nightmare.unity
+    guid: 21357e54d0be55341868c1b5dab9d754
+  - enabled: 1
+    path: Assets/Scenes/Level 3 - Flooded Cave Nightmare.unity
+    guid: 0232a6988db651c44bc744664f785f23
   m_configObjects: {}
