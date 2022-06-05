@@ -20498,7 +20498,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5825179612632785972, guid: 6b5d6a6155487fb4b92773415fd183fa, type: 3}
       propertyPath: signText
-      value: This is water. You can drown in it.
+      value: 'Press Q to breath underwater.<br>(Note: Breathing underwater will kill
+        you.)'
       objectReference: {fileID: 0}
     - target: {fileID: 5825179612632785973, guid: 6b5d6a6155487fb4b92773415fd183fa, type: 3}
       propertyPath: m_Name
