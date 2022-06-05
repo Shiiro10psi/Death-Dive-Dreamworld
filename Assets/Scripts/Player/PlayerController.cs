@@ -12,8 +12,7 @@ public class PlayerController : MonoBehaviour
     PauseMenu pauseMenu;
 
     Animator animator;
-
-
+    
     float xmove = 0f;
     float ymove = 0f;
     [SerializeField] float maxSpeed = 20f;
@@ -35,7 +34,6 @@ public class PlayerController : MonoBehaviour
         sounds = GetComponent<PlayerSoundsManager>();
         input = GetComponent<PlayerInput>();
         pauseMenu = FindObjectOfType<PauseMenu>();
-
         animator = GetComponent<Animator>();
     }
 
@@ -44,16 +42,21 @@ public class PlayerController : MonoBehaviour
     {
         if (input.currentActionMap == input.actions.FindActionMap("Player_Land"))
         {
-
+            //Change Drag to Stop when not moving or in the air
             if (xmove == 0 && playerState.isOnGround())
             {
-                rb.drag = 3f;
+                rb.drag = 5f;
             }
             if (xmove != 0 || jumpBuffer > 0 || !playerState.isOnGround())
             {
                 rb.drag = 0.5f;
             }
 
+            //Increase drag if changing directions while on ground to increase speed of turning around
+            if (((xmove < 0 && rb.velocity.x > 0 ) || (xmove > 0 && rb.velocity.x < 0 )) && playerState.isOnGround()) rb.drag = 3f;
+
+
+            //Apply Movement force and Jump force if alive
             if (playerState.IsAlive())
             {
                 rb.AddForce(new Vector2((xmove * Time.deltaTime * moveSpeed), 0), ForceMode2D.Impulse);
@@ -63,8 +66,8 @@ public class PlayerController : MonoBehaviour
                     if (playerState.CanJump() || waterJump)
                     {
                         rb.velocity = new Vector2(rb.velocity.x, 0); //Nullify vertical movement to ensure jumps are always the same strength.
-                        if (!waterJump)rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
-                        if (waterJump) rb.AddForce(new Vector2(0, jumpStrength / 1.5f), ForceMode2D.Impulse);
+                        if (!waterJump)rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse); //Normal Jump
+                        if (waterJump) rb.AddForce(new Vector2(0, jumpStrength / 1.5f), ForceMode2D.Impulse); //Jump out of water, prevents player from super jumping out of water.
                         sounds.PlayJumpSound();
                         jumpBuffer = 0;
                     }
@@ -72,9 +75,10 @@ public class PlayerController : MonoBehaviour
                     jumpBuffer -= Time.deltaTime;
                 }
             }
-
             waterJump = false;
 
+
+            //Increase fall speed while going down but not while going up.
             if (lastY > rb.position.y)
             {
                 rb.gravityScale = 1.5f;
@@ -83,9 +87,10 @@ public class PlayerController : MonoBehaviour
             {
                 rb.gravityScale = 1f;
             }
-
             lastY = rb.position.y;
 
+            //If player is trapped in "Midair" with the ground check point off the ground (Example if the player is between two dead bodies)
+            //provides a weak jump to allow some sideways movement to reach ground.
             if (!playerState.isOnGround() && (rb.velocity.x < .01f && rb.velocity.x > -.01f) && (rb.velocity.y < .01f && rb.velocity.y > -.01f) && playerState.IsAlive())
             {
                 escapeJumpTimer += Time.fixedDeltaTime;
@@ -106,6 +111,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //Clamp max speed
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed));
     }
 
@@ -134,5 +140,12 @@ public class PlayerController : MonoBehaviour
     private void OnPause(InputValue value)
     {
         pauseMenu.Open();
+    }
+
+    private void OnDrown(InputValue value)
+    {
+        float f = value.Get<float>();
+        if (f != 0) playerState.ToggleBreathing(true);
+        if (f == 0) playerState.ToggleBreathing(false);
     }
 }

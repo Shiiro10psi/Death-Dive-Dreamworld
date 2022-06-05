@@ -34,6 +34,7 @@ public class PlayerStateManager : MonoBehaviour
 
     float Air = 30f;
     [SerializeField] float MaxAir = 30f;
+    bool BreathingOut = false;
 
     [SerializeField] GameObject deadBody;
 
@@ -78,6 +79,11 @@ public class PlayerStateManager : MonoBehaviour
         if (inWater)
         {
             Air -= Time.deltaTime;
+            if (BreathingOut)
+            {
+                Air -= 10f * Time.deltaTime;
+            }
+
             if (Air <= 0)
             {
                 DrownDeath();
@@ -233,6 +239,12 @@ public class PlayerStateManager : MonoBehaviour
         input.SwitchCurrentActionMap("Player_Land");
         inWater = false;
         sounds.PlayWaterSound();
+        BreathingOut = false;
+    }
+
+    public void ToggleBreathing(bool b)
+    {
+        BreathingOut = b;
     }
 
 }
