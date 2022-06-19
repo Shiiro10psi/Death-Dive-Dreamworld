@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 12
-  moveSpeed: 10
+  moveSpeed: 18
   jumpStrength: 7
   waterMoveSpeed: 10
   jumpBufferTime: 0.1
